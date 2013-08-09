@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  min_players: 1
+  max_players: 1
+  duration: 1
+  genre_id: 1
+  play_style_id: 1
+
+two:
+  name: MyString
+  min_players: 1
+  max_players: 1
+  duration: 1
+  genre_id: 1
+  play_style_id: 1
