@@ -7,6 +7,12 @@ gem 'rails', '3.2.13'
 
 group :development do
   gem 'sqlite3'
+  gem 'debugger', :require => 'ruby-debug'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'quiet_assets'
+  gem 'thin'
 end
 
 group :production do
