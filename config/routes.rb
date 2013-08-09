@@ -1,4 +1,7 @@
 Suggestotron::Application.routes.draw do
+  resources :genres
+
+
   resources :games
 
 
