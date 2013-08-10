@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+Genre.create(:name=>"Action")
+Genre.create(:name=>"Educational")
+Genre.create(:name=>"Stratgey")
+Genre.create(:name=>"Sport")
+PlayStyle.create(:name=>"Board")
+PlayStyle.create(:name=>"Card")
+PlayStyle.create(:name=>"Video")
