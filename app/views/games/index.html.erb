@@ -3,9 +3,8 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Min players</th>
-    <th>Max players</th>
-    <th>Duration</th>
+    <th>players</th>
+    <th>Duration (min.)</th>
     <th>Genre</th>
     <th>Play style</th>
     <th></th>
@@ -16,11 +15,10 @@
 <% @games.each do |game| %>
   <tr>
     <td><%= game.name %></td>
-    <td><%= game.min_players %></td>
-    <td><%= game.max_players %></td>
+     <td><%= game.min_players%>  <%= "- #{game.max_players}" unless game.min_players== game.max_players %> </td>
     <td><%= game.duration %></td>
-    <td><%= game.genre_id %></td>
-    <td><%= game.play_style_id %></td>
+    <td><%= game.genre.name  unless game.genre_id.blank? %></td>
+    <td><%= game.play_style.name unless game.play_style_id.blank? %></td>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,3 +29,5 @@
 <br />
 
 <%= link_to 'New Game', new_game_path %>
+<%= render "search"%>
+

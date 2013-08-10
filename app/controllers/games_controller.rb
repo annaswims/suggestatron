@@ -2,7 +2,14 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+
+    #all this code in a controller, for the sake a a simple demonstration.  Next step: move it to named scopes in the model
+    @games = Game.order("name")
+    @games = @games.where(["name like ?", "%#{params[:name]}%"]) unless params[:name].blank?
+    @games = @games.where([" min_players <= ? and max_players >=?", params[:how_many_players], params[:how_many_players]]) unless params[:how_many_players].blank?
+    @games = @games.where(:genre_id=>params[:genre_id]) unless params[:genre_id].blank?
+    @games = @games.where(:play_style_id=>params[:play_style_id]) unless params[:play_style_id].blank?
+    @games = @games.where(:duration=>(params[:duration].to_i-15)..(params[:duration].to_i+15) )unless params[:duration].blank?
 
     respond_to do |format|
       format.html # index.html.erb

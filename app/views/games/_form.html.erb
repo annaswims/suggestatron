@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :genre_id %><br />
-    <%= f.number_field :genre_id %>
+    <%= f.select :genre_id, Genre.all.collect {|g| [ g.name, g.id ] }, { :include_blank => true }%>
   </div>
   <div class="field">
     <%= f.label :play_style_id %><br />
-    <%= f.number_field :play_style_id %>
+    <%= f.select :play_style_id, PlayStyle.all.collect {|p| [p.name, p.id]}, { :include_blank => true }%>
   </div>
   <div class="actions">
     <%= f.submit %>

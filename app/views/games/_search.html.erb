@@ -1,0 +1,28 @@
+<%= form_tag(games_path, :method => :get) do %>
+   <fieldset>
+    <legend>Search:</legend>
+    <div class="field">
+      <%= label_tag :name %><br />
+      <%= text_field_tag :name, params[:name] %>
+    </div>
+    <div class="field">
+      <%= label_tag :how_many_players %><br />
+      <%= number_field_tag :how_many_players, params[:how_many_players]  %>
+    </div>
+    <div class="field">
+      <%= label_tag :duration %><br />
+      <%= number_field_tag :duration, params[:duration] %>
+    </div>
+    <div class="field">
+      <%= label_tag :genre_id %><br />
+      <%= select_tag :genre_id, options_from_collection_for_select(Genre.all.collect, :id,:name, params[:genre_id] ), { :include_blank => true }%>
+    </div>
+    <div class="field">
+      <%= label_tag :play_style_id %><br />
+      <%= select_tag :play_style_id, options_from_collection_for_select(PlayStyle.all.collect, :id,:name,params[:play_style_id]), { :include_blank => true }%>
+    </div>
+    <div class="actions">
+      <%= submit_tag "search" %>
+    </div>
+  </fieldset>
+<% end %>
