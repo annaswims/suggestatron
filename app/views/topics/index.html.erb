@@ -25,5 +25,9 @@
 </table>
 
 <br />
+<% if session[:voted] %>
+  You have voted <%= pluralize(session[:voted], "time")%>. 
+  <br/>
+<% end %>
 
 <%= link_to 'New Topic', new_topic_path %>
