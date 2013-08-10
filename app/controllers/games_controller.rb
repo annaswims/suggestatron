@@ -5,11 +5,27 @@ class GamesController < ApplicationController
 
     #all this code in a controller, for the sake a a simple demonstration.  Next step: move it to named scopes in the model
     @games = Game.order("name")
-    @games = @games.where(["name like ?", "%#{params[:name]}%"]) unless params[:name].blank?
-    @games = @games.where([" min_players <= ? and max_players >=?", params[:how_many_players], params[:how_many_players]]) unless params[:how_many_players].blank?
-    @games = @games.where(:genre_id=>params[:genre_id]) unless params[:genre_id].blank?
-    @games = @games.where(:play_style_id=>params[:play_style_id]) unless params[:play_style_id].blank?
-    @games = @games.where(:duration=>(params[:duration].to_i-15)..(params[:duration].to_i+15) )unless params[:duration].blank?
+
+    unless params[:genre_id].blank?
+      @games = @games.where(:genre_id => params[:genre_id]) 
+    end
+
+    unless params[:play_style_id].blank?
+      @games = @games.where(:play_style_id => params[:play_style_id])
+    end
+
+    unless params[:how_many_players].blank?
+      @games = @games.where([" min_players <= ? and max_players >=?", params[:how_many_players], params[:how_many_players]]) 
+    end
+
+    #TODO: this probably shouldn't be case sesnsitive, but let's not talk too much about SQL now
+    unless params[:name].blank?
+      @games = @games.where(["name like ?", "%#{params[:name]}%"]) 
+    end
+
+    unless params[:duration].blank?
+      @games = @games.where(:duration => (params[:duration].to_i-15)..(params[:duration].to_i+15) )
+    end
 
     respond_to do |format|
       format.html # index.html.erb
